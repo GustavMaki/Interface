@@ -6,27 +6,30 @@ namespace Interface
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("1. List | 2. Search Brand | 3.Add");
             Repository repo = new CarsForSale();
             var Choice = Console.ReadLine();
 
-
+            Console.WriteLine("1. List | 2. Search Brand | 3.Add");
+           
             if(Choice == "1")
             {
                 repo.ListCars();
             }
+
             if (Choice == "2")
             {
                 Console.WriteLine("1. Brand Name: ");
                 var SearchName = Console.ReadLine();
                 repo.SearchForCar(SearchName);
             }
+
             if (Choice == "3")
             {
                 Console.WriteLine("Car NAME and MODEL:");
                 var NewCar = Console.ReadLine();
                 repo.AddCar(NewCar);
             }
+
             Console.ReadLine();
         }
     }
@@ -43,7 +46,17 @@ namespace Interface
 
     class CarsForSale : Repository
     {
-        string[] car = new string[] {"Volvo V70", "Volvo V60", "Audi R8", "Audi R6", "Nissan Micra", "Opel Alpha", "Corvette Stingray"};
+        string[] car = new string[] 
+        {
+        "Volvo V70", 
+        "Volvo V60", 
+        "Audi R8", 
+        "Audi R6", 
+        "Nissan Micra", 
+        "Opel Alpha", 
+        "Corvette Stingray"
+        };
+
         int i;
 
         public void AddCar(string NewCar)
@@ -59,13 +72,19 @@ namespace Interface
 
                 for (i = 0; i < car.Length; i++)
                 {
+
                     if (car[i].StartsWith(Search))
                     {
                         Console.WriteLine((1+1) +". "+ car[i]);
                     }
-                    else { }
+                    else 
+                    {
+                    }
+
                 }
+
             }
+
             else
             {
                 Console.WriteLine("No results matching search.");
@@ -80,10 +99,5 @@ namespace Interface
                 Console.WriteLine((i+1) + ". " + car[i]);
             }
         }
-    }
-
-    class Car
-    {
-        
     }
 }
